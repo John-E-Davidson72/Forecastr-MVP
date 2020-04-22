@@ -1,4 +1,4 @@
-# Forecastr
+# Forecastr - MVP
 > Quickly test financial viability of new products or services over a one year fiscal period
 
 Forecastr calculates market sizing and segment parameters for new products or services, then compares
