@@ -122,5 +122,5 @@ def forecast(urldate):
 def inject_timestamp():
     return {'timestamp': datetime.datetime.now().strftime("%Y%m%d%H%M%S")}
 
-if __name__ == "__main__":
-    app.run()
+#if __name__ == "__main__":
+    #app.run()
