@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+      <h2>Inputs:</h2>
+      <p>Estimated unit sales per month: {{ sales }}</p>
+      <p>Estimated sales price £{{ price }}</p>
+      <p>Target market segment {{ sas }}%</p>
+      <p>Estimated market growth {{ growth }}%</p>
+      <br>
+      <h2>TAM & SAS:</h2>
+      <p>Total Available Market £{{ calc_tam }}</p>
+      <p>Service Available Segment £{{ calc_sas }}</p>
+      <br>
+      <h2>{{ name }}</h2>
+      <img src="{{ url_for('static', filename='img/' + fileName) }}">
+      <br>
+      <p>FP&L SAS = £{{ fpl_sas }}</p>
+      <p>FP&L SAS delta = £{{ fpl_sas_delta }}</p>
+      <p>FP&L SAS actual = {{ fpl_sas_delta_pc }}%</p>
+      <div>
+        <button onclick="myFunction()" class='btn btn-default'>Print</button>
+        <!--<a href="{{ url_for('market') }}" id=recalculate><button class='btn btn-default'>Recalculate</button></a>-->
+      </div>
+      <script>
+        function myFunction() {
+          window.print();
+        }
+      </script>
+{% endblock %}

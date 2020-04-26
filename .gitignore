@@ -129,5 +129,4 @@ dmypy.json
 
 # Other
 *.xlsx
-*.html
 .vscode
