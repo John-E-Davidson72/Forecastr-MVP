@@ -29,8 +29,8 @@ path_dir = temp_dir[0]
 chart_path = '\\static\\img\\'
 # set incremental file names
 fileDate = datetime.datetime.now()
-fileExt = fileDate.strftime("%Y%m%d%H%M%S")
-fileName = 'plot-' + fileExt + '.png'
+fileExt = fileDate.strftime("%d-%m-%Y %H:%M:%S")
+fileName = 'plot.png'
 # define the full path for the chart
 img_path = path_dir + chart_path + fileName
 
@@ -43,9 +43,9 @@ def market():
     else:
         return render_template('market.html')
 
-@app.route('/forecast/<urldate>', methods=['POST'])
+@app.route('/forecast', methods=['POST'])
 @nocache
-def forecast(urldate):
+def forecast():
     #tam & sas
     sales = request.form['sales']
     price = request.form['price']
@@ -101,6 +101,7 @@ def forecast(urldate):
     plt.legend()
     plt.xticks(x)
     plt.savefig(img_path)
+    plt.close()
     return render_template(
         'forecast.html', 
         sales=sales,
@@ -113,11 +114,10 @@ def forecast(urldate):
         fpl_sas = fpl_sas,
         fpl_sas_delta = fpl_sas_delta,
         fpl_sas_delta_pc = fpl_sas_delta_pc,
-        urldate = urldate,
         fileName = fileName,
         fileExt = fileExt
     )
-
+    
 @app.context_processor
 def inject_timestamp():
     return {'timestamp': datetime.datetime.now().strftime("%Y%m%d%H%M%S")}

@@ -1,28 +1,58 @@
 {% extends "layout.html" %}
 {% block content %}
-      <h2>Inputs:</h2>
-      <p>Estimated unit sales per month: {{ sales }}</p>
-      <p>Estimated sales price £{{ price }}</p>
-      <p>Target market segment {{ sas }}%</p>
-      <p>Estimated market growth {{ growth }}%</p>
-      <br>
-      <h2>TAM & SAS:</h2>
-      <p>Total Available Market £{{ calc_tam }}</p>
-      <p>Service Available Segment £{{ calc_sas }}</p>
-      <br>
-      <h2>{{ name }}</h2>
-      <img src="{{ url_for('static', filename='img/' + fileName) }}">
-      <br>
-      <p>FP&L SAS = £{{ fpl_sas }}</p>
-      <p>FP&L SAS delta = £{{ fpl_sas_delta }}</p>
-      <p>FP&L SAS actual = {{ fpl_sas_delta_pc }}%</p>
-      <div>
-        <button onclick="myFunction()" class='btn btn-default'>Print</button>
-        <!--<a href="{{ url_for('market') }}" id=recalculate><button class='btn btn-default'>Recalculate</button></a>-->
+<div class="col-lg-6">
+  <div class="bs-component">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Maret sizing inputs</h3>
+        </div>
+        <div class="panel-body">
+          <p>Estimated unit sales per month: {{ sales }}</p>
+          <p>Estimated sales price £{{ price }}</p>
+          <p>Target market segment (SAS) {{ sas }}%</p>
+          <p>Estimated market growth {{ growth }}%</p>
+        </div>
       </div>
-      <script>
-        function myFunction() {
-          window.print();
-        }
-      </script>
+  </div>
+  <div class="bs-component">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">TAM & SAS</h3>
+      </div>
+      <div class="panel-body">
+        <p>Total Available Market (TAM) £{{ calc_tam }}</p>
+        <p>Service Available Segment (SAS) £{{ calc_sas }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="bs-component">
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <h3 class="panel-title">Forecast</h3>
+      </div>
+      <div class="panel-body">
+        <p>FP&L SAS = £{{ fpl_sas }}</p>
+        <p>FP&L SAS delta = £{{ fpl_sas_delta }}</p>
+        <p>FP&L SAS actual = {{ fpl_sas_delta_pc }}%</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-lg-6"> 
+  <div>
+    <h2>Forecast plot {{ fileExt }}</h2>
+    <img src="{{ url_for('static', filename='img/' + fileName) }}">
+  </div>
+  <div class="form-group">
+    <div class="col-lg-12 col-lg-offset-4">
+      <button onclick="myFunction()" class='btn btn-info'>Print</button>
+    <a href="{{ url_for('market') }}" id=recalculate><button class='btn btn-danger'>Recalculate</button></a>
+    </div>
+  </div>
+</div>
+<script>
+  function myFunction() {
+    window.print();
+  }
+</script>      
 {% endblock %}

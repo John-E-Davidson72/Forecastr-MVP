@@ -1,4 +1,4 @@
-forecastr 0.0.2 [MVP]
+forecastr 0.0.3 [MVP]
 Copyright (c) 2020, John Edward Davidson
 All rights reserved
 

@@ -1,66 +1,97 @@
 {% extends "layout.html" %}
 {% block content %}
-    <div class="container">
-          <form action="{{ url_for('forecast', urldate=timestamp) }}" method="post">
-             <div>
-               <h2>{{ timedate }}</h2>
-               <h3>Input Total Available Market Parameters:</h3>
-             </div>
-             <div>
-               <label for="sales">Estimated unit sales per month</label>
-               <input type="number" id="sales" name="sales" value="{{ request.form.sales }}" min="1" max= "1000000" step="1" placeholder="100" required>
-             </div>
-             <div>
-               <label for="price">Estimated sales price £</label>
-               <input type="number" id="price" name="price" value="{{ request.form.price }}" step="0.01" placeholder="10.00" min="1" required>
-             </div>
-             <div>
-               <label for="sas">Target market segment %</label>
-               <input type="number" id="sas" name="sas" value="{{ request.form.sas }}" placeholder="10" step="1" min="10" max="90" required> 
-             </div>
-             <div>
-               <label for="growth">Estimated market growth %</label>
-               <input type="number" id="growth" name="growth" value="{{ request.form.growth }}" placeholder="0.5" step="0.5" min="0.5" max="50" required>
-             </div>
-             <br>
-             <div>
-              <h3>Input Forecast P&L Parameters:</h3>
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3">
+    <div class="well bs-component">
+      <form class="form-horizontal" action="{{ url_for('forecast', urldate=timestamp) }}" method="post">
+        <fieldset>
+          <legend>Product sales forecast</legend>
+          <div>
+            <p class="text-info">Total Available Market Parameters:</p>
+          </div>
+          <div class="form-group">
+            <label for="sales" class="col-lg-9 control-label">Estimated unit sales per month</label>
+            <div class="col-lg-3">
+              <input type="number" class="form-control" id="sales" name="sales" value="{{ request.form.sales }}" min="1" max= "1000000" step="1" placeholder="100" required>
             </div>
-            <div>
-              <label for="salesm1">Target unit sales month 1</label>
-              <input type="number" id="salesm1" name="salesm1" value="{{ request.form.salesm1 }}" min="1" max= "100000" step="1" placeholder="100" required>
+          </div>
+          <div class="form-group">
+            <label for="price" class="col-lg-9 control-label">Estimated sales price £</label>
+            <div class="col-lg-3">
+              <input type="number" class="form-control" id="price" name="price" value="{{ request.form.price }}" step="0.01" placeholder="10.00" min="1" required>
             </div>
-            <div>
-              <label for="pricem1">Estimated sales price for month 1 £</label>
-              <input type="number" id="pricem1" name="pricem1" value="{{ request.form.pricem1 }}" step="0.01" placeholder="10.00" min="1" required>
+          </div>
+          <div class="form-group">
+            <label for="sas" class="col-lg-9 control-label">Target market segment (SAS) %</label>
+            <div class="col-lg-3">
+              <input type="number" class="form-control" id="sas" name="sas" value="{{ request.form.sas }}" placeholder="10" step="1" min="10" max="90" required>
             </div>
-            <div>
-              <label for="sgmom">Projected sales growth month-on-month %</label>
-              <input type="number" id="sgmom" name="sgmom" value="{{ request.form.sgmom }}" placeholder="0.5" step="0.5" min="0.5" max="10" required> 
+          </div>
+          <div class="form-group">
+            <label for="growth" class="col-lg-9 control-label">Estimated market growth %</label>
+            <div class="col-lg-3">
+              <input type="number" class="form-control" id="growth" name="growth" value="{{ request.form.growth }}" placeholder="0.5" step="0.5" min="0.5" max="50" required>
             </div>
-            <div>
-              <label for="cmgrowth">Desired Contribution Margin growth month-on-month %</label>
-              <input type="number" id="cmgrowth" name="cmgrowth" value="{{ request.form.cmgrowth }}" placeholder="0.5" step="0.5" min="0.5" max="10" required>
+          </div>
+          <div>
+            <p class="text-info">Forecast P&L Parameters:</p>
+          </div>
+          <div class="form-group">
+            <label for="salesm1" class="col-lg-9 control-label">Target unit sales month 1</label>
+            <div class="col-lg-3">
+              <input type="number" class="form-control" id="salesm1" name="salesm1" value="{{ request.form.salesm1 }}" min="1" max= "100000" step="1" placeholder="100" required>
             </div>
-            <div>
-              <label for="pindex">Price index per month %</label>
-              <input type="number" id="pindex" name="pindex" value="{{ request.form.pindex }}" placeholder="0.5" step="0.5" min="0.5" max="10" required>
+          </div>
+          <div class="form-group">
+            <label for="pricem1" class="col-lg-9 control-label">Estimated sales price for month 1 £</label>
+            <div class="col-lg-3">
+              <input type="number" class="form-control" id="pricem1" name="pricem1" value="{{ request.form.pricem1 }}" step="0.01" placeholder="10.00" min="1" required>
             </div>
-            <div>
-              <label for="cogs">Estimated Cost of Goods Sold expense %</label>
-              <input type="number" id="cogs" name="cogs" value="{{ request.form.cogs }}" placeholder="25" step="1" min="10" max="25" required>
+          </div>
+          <div class="form-group">
+            <label for="sgmom" class="col-lg-9 control-label">Projected sales growth month-on-month %</label>
+            <div class="col-lg-3">
+              <input type="number" class="form-control" id="sgmom" name="sgmom" value="{{ request.form.sgmom }}" placeholder="0.5" step="0.5" min="0.5" max="10" required>
             </div>
-            <div>
-              <label for="opex">Estimated Revenue Driven Oerating Expenses %</label>
-              <input type="number" id="opex" name="opex" value="{{ request.form.opex }}" placeholder="25" step="1" min="10" max="25" required>
+          </div>
+          <div class="form-group">
+            <label for="cmgrowth" class="col-lg-9 control-label">Desired Contribution Margin growth month-on-month %</label>
+            <div class="col-lg-3">
+              <input type="number" class="form-control" id="cmgrowth" name="cmgrowth" value="{{ request.form.cmgrowth }}" placeholder="0.5" step="0.5" min="0.5" max="10" required>
             </div>
-            <div>
-              <label for="fixed">Estimated fixed costs %</label>
-              <input type="number" id="fixed" name="fixed" value="{{ request.form.fixed }}" placeholder="35" step="1" min="10" max="40" required>
+          </div>
+          <div class="form-group">
+            <label for="pindex" class="col-lg-9 control-label">Price index per month %</label>
+            <div class="col-lg-3">
+              <input type="number" class="form-control" id="pindex" name="pindex" value="{{ request.form.pindex }}" placeholder="0.5" step="0.5" min="0.5" max="10" required>
             </div>
-            <br>
-            <div>
+          </div>
+          <div class="form-group">
+            <label for="cogs" class="col-lg-9 control-label">Estimated Cost of Goods Sold expense %</label>
+            <div class="col-lg-3">
+              <input type="number" class="form-control" id="cogs" name="cogs" value="{{ request.form.cogs }}" placeholder="25" step="1" min="10" max="25" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="opex" class="col-lg-9 control-label">Estimated Revenue Driven Operating expenses %</label>
+            <div class="col-lg-3">
+              <input type="number" class="form-control" id="opex" name="opex" value="{{ request.form.opex }}" placeholder="25" step="1" min="10" max="25" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="fixed" class="col-lg-9 control-label">Estimated fixed costs %</label>
+            <div class="col-lg-3">
+              <input type="number" class="form-control" id="fixed" name="fixed" value="{{ request.form.fixed }}" placeholder="35" step="1" min="10" max="40" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-12 col-lg-offset-5">
               <input class="btn btn-primary" type="submit" value="Submit">
             </div>
-           </form>
-  {% endblock %}
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

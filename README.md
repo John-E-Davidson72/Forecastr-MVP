@@ -56,18 +56,17 @@ Forecatr will plot a P&L chart and compare initial segment size assumption again
 ## Development setup
 
 Use PIP to install from requirements.txt.
-Ver. 0.0.2 runs on localhost only.
 
 ## Release History
 
-* 0.0.2
+* 0.0.3
     * *MVP for development and testing:*
     * **WIP:**
-    * Separation of concerns - chart logic on separate route
-    * WTForms, CSRF, may add persistence layer + sessions / user management
-    * Finish styling (Bootstrap) 
-    * Deployment code (gunicorn / Heroku)
+    * Scaling: WTForms, CSRF, persistence layer + sessions / user management
     * Currency selection
+
+    Working app deployed here:
+    https://johndavidson.eu.pythonanywhere.com/
 
 ## Meta
 
