@@ -53,7 +53,9 @@ def forecast():
     growth = request.form['growth']
     total = Market(sales, price, sas, growth)
     calc_tam = total.tam()
+    calc_tam_c = '{:,.2f}'.format(calc_tam)
     calc_sas = total.sas()
+    calc_sas_c = '{:,.2f}'.format(calc_sas)
     #forecast P&L inputs
     salesm1 = request.form['salesm1']
     pricem1 = request.form['pricem1']
@@ -89,7 +91,9 @@ def forecast():
     fpl_op_cum = np.cumsum(fpl_op)
     #sas and fp&l comparison
     fpl_sas = round(np.sum(fpl_rev, dtype=np.float64), 2)
+    fpl_sas_c = '{:,.2f}'.format(fpl_sas)
     fpl_sas_delta = round(float(fpl_sas - calc_sas), 2)
+    fpl_sas_delta_c = '{:,.2f}'.format(fpl_sas_delta)
     fpl_sas_delta_pc = round(float((fpl_sas / calc_tam) * 100), 2)    
     #plot parameters
     plt.plot(x, fpl_rev_cum, label='revenue')
@@ -108,11 +112,11 @@ def forecast():
         price=price,
         sas=sas,
         growth=growth,
-        calc_tam=calc_tam, 
-        calc_sas=calc_sas,
+        calc_tam_c=calc_tam_c, 
+        calc_sas_c=calc_sas_c,
         name = 'Forecast P&L cumulative', 
-        fpl_sas = fpl_sas,
-        fpl_sas_delta = fpl_sas_delta,
+        fpl_sas_c = fpl_sas_c,
+        fpl_sas_delta_c = fpl_sas_delta_c,
         fpl_sas_delta_pc = fpl_sas_delta_pc,
         fileName = fileName,
         fileExt = fileExt
