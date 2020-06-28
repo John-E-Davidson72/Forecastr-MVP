@@ -16,11 +16,6 @@ from nocache import nocache
 # app config
 app = Flask(__name__)
 app.config.from_object('_config')
-#app.config.from_object(__name__)
-#app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-#app.config["CACHE_TYPE"] = "null" 
-#app.config['SECRET_KEY'] = '\\\x01\x81\x12\xc5\xa6\xa4Q\x90\x1ct\x89E\x1dzr8~P\xdb\x0f\xfbq\xed'
-#app.config["DEBUG"] = False
 
 # get script folder, set path and incremental file names
 base_dir = os.path.abspath(__file__)
